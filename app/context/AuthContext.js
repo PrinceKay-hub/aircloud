@@ -79,14 +79,14 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const { data: session, status, update  } = useSession();
+  const { data: session, status, update } = useSession();
 
   const value = {
     user: session?.user || null,
     loading: status === "loading",
     isAuthenticated: status === "authenticated",
     login: (credentials) =>
-      signIn("credentials", { redirect: false, ...credentials }),
+    signIn("credentials", { redirect: false, ...credentials }),
     logout: () => signOut({ redirect: false }),
     updateSession: async (newUserData) => {
       await update({

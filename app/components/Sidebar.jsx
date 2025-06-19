@@ -7,11 +7,24 @@ import { menuItems } from "../data/menu";
 import { Menu, X } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { LogOut } from "lucide-react";
+import Image from "next/image";
+import LogoutConfirmation from "./LogoutConfirmation";
 
 const Sidebar = () => {
   const pathname = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const { logout } = useAuth();
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+
+
+   const handleLogoutClick = () => {
+    setIsLogoutModalOpen(true);
+  };
+
+  const handleConfirmLogout = () => {
+    logout();
+    setIsLogoutModalOpen(false);
+  };
 
   return (
     <div
@@ -26,6 +39,13 @@ const Sidebar = () => {
           >
             {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
+          <Image
+            src={"/images/aircloud.png"}
+            alt={"aircloud"}
+            width={100}
+            height={100}
+            className="mt-6"
+          />
           <nav className="mt-8 flex-grow">
             {menuItems.map((item) => {
               const Icon = item.icon;
@@ -59,15 +79,20 @@ const Sidebar = () => {
         </ul>
 
         <button
-          onClick={logout}
+          onClick={handleLogoutClick}
           className="flex px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors cursor-pointer"
         >
-          <LogOut size={20} style={{ minWidth: "20px" }}/>
+          <LogOut size={20} style={{ minWidth: "20px" }} />
           {isSidebarOpen && (
             <span className="ml-4 whitespace-nowrap">Logout</span>
           )}
         </button>
       </div>
+      <LogoutConfirmation 
+        isOpen={isLogoutModalOpen}
+        onClose={() => setIsLogoutModalOpen(false)}
+        onConfirm={handleConfirmLogout}
+      />
     </div>
   );
 };

@@ -50,12 +50,12 @@ const ProjectPage = () => {
 
   return (
     <div>
-      <div className="sticky top-0 bg-white p-5 text-gray-900 text-2xl font-bold flex gap-3 items-center">
+      <div className="mx-auto py-4 px-4 sm:px-6 justify-between sticky top-0 bg-white p-5 text-gray-900 text-2xl font-bold flex gap-3 items-center">
         Project Management
       </div>
 
       <div className="bg-white shadow-md  mx-4 sm:mx-6 lg:mx-8 mt-4 mb-2 rounded-lg">
-        <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6">
+        <div className=" mx-auto py-4 px-4 sm:px-6">
           <div className=" flex items-center justify-between">
             <h1 className="text-gray-900 text-lg font-bold">My Projects</h1>
 

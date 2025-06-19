@@ -33,7 +33,7 @@ export default function Login() {
         setError("Invalid credentials. Please try again.");
       } else {
 
-        toast.success("Project created successfully!");
+        toast.success("Login successfully!");
 
         router.push("/pages/home");
       }
